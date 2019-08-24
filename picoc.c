@@ -1,4 +1,5 @@
 #include "picoc_config.h"
+#ifndef PICOC_SKIP_MAIN
 /* picoc main program - this varies depending on your operating system and
  * how you're using picoc */
 /* platform-dependent code for running programs is in this file */
@@ -75,4 +76,5 @@ int main(int argc, char **argv)
     PicocCleanup(&pc);
     return pc.PicocExitValue;
 }
+#endif
 #endif
