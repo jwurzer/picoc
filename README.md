@@ -1,4 +1,6 @@
-Originally forked from https://github.com/zsaleeba/picoc
+Originally forked from https://github.com/zsaleeba/picoc (Original repository is moved to https://gitlab.com/zsaleeba/picoc)
+
+This fork adds the modifications from https://github.com/jpoirier/picoc
 
 # Description
 
