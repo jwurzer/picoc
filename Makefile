@@ -7,7 +7,10 @@ CC=gcc
 
 # -O3 -g
 # -std=gnu11
-CFLAGS=-Wall -g -std=gnu11 -pedantic -DUNIX_HOST -DVER=\"`git show-ref --abbrev=8 --head --hash head`\" -DTAG=\"`git describe --abbrev=0 --tags`\"
+GIT_TAG=\"`git describe --abbrev=0 --tags 2> /dev/null || echo "v3.2.2"`\"
+
+GIT_VER=\"`git show-ref --abbrev=8 --head --hash head`\"
+CFLAGS=-Wall -g -std=gnu11 -pedantic -DUNIX_HOST -DVER=$(GIT_VER) -DTAG=$(GIT_TAG)
 #CFLAGS=-Wall -g -std=gnu11 -pedantic
 LIBS=-lm -lreadline
 
