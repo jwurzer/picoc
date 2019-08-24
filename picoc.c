@@ -1,3 +1,4 @@
+#include "picoc_config.h"
 /* picoc main program - this varies depending on your operating system and
  * how you're using picoc */
 /* platform-dependent code for running programs is in this file */
@@ -32,12 +33,18 @@ int main(int argc, char **argv)
                "> picoc -s <file1.c>... [- <arg1>...] : run a script, runs the program without calling main()\n"
                "> picoc -i                            : interactive mode, Ctrl+d to exit\n"
                "> picoc -c                            : copyright info\n"
-               "> picoc -h                            : this help message\n");
+               "> picoc -h                            : this help message\n"
+               "> picoc -v                            : show picoc version\n");
         return 0;
     }
 
     if (strcmp(argv[ParamCount], "-c") == 0) {
         printf("%s\n", (char*)&__LICENSE);
+        return 0;
+    }
+
+    if (strcmp(argv[ParamCount], "-v") == 0) {
+        printf("%s\n", PICOC_VERSION);
         return 0;
     }
 

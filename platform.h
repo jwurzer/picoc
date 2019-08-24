@@ -14,6 +14,8 @@
 #include <math.h>
 #include <stdbool.h>
 
+#include "picoc_config.h"
+
 /* host platform includes */
 #ifdef UNIX_HOST
 # include <stdint.h>

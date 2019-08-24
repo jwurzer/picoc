@@ -8,21 +8,28 @@ CC=gcc
 # -O3 -g
 # -std=gnu11
 CFLAGS=-Wall -g -std=gnu11 -pedantic -DUNIX_HOST -DVER=\"`git show-ref --abbrev=8 --head --hash head`\" -DTAG=\"`git describe --abbrev=0 --tags`\"
+#CFLAGS=-Wall -g -std=gnu11 -pedantic
 LIBS=-lm -lreadline
 
 TARGET	= picoc
-SRCS	= picoc.c table.c lex.c parse.c expression.c heap.c type.c \
+SRC_MAIN	= picoc.c
+SRCS	= table.c lex.c parse.c expression.c heap.c type.c \
 	variable.c clibrary.c platform.c include.c debug.c \
 	platform/platform_unix.c platform/library_unix.c \
 	cstdlib/stdio.c cstdlib/math.c cstdlib/string.c cstdlib/stdlib.c \
 	cstdlib/time.c cstdlib/errno.c cstdlib/ctype.c cstdlib/stdbool.c \
 	cstdlib/unistd.c
+OBJ_MAIN	:= $(SRC_MAIN:%.c=%.o)
 OBJS	:= $(SRCS:%.c=%.o)
 
 all: $(TARGET)
 
-$(TARGET): $(OBJS)
-	$(CC) $(CFLAGS) -o $(TARGET) $(OBJS) $(LIBS)
+$(TARGET): $(TARGET).a $(OBJ_MAIN)
+	$(CC) $(CFLAGS) -o $(TARGET) $(OBJ_MAIN) $(TARGET).a $(LIBS)
+
+
+$(TARGET).a: $(OBJS)
+	ar rcs $(TARGET).a $(OBJS)
 
 test:	all
 	@(cd tests; make -s test)
@@ -30,7 +37,7 @@ test:	all
 	@(cd tests; make -s jpoirier)
 
 clean:
-	rm -f $(TARGET) $(OBJS) *~
+	rm -f $(TARGET) $(TARGET).a $(OBJS) $(OBJ_MAIN) *~
 
 count:
 	@echo "Core:"

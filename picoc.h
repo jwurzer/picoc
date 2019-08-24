@@ -7,7 +7,7 @@
 /* picoc version number */
 #ifdef VER
 /* VER, the git hash number, and TAG are obtained via the Makefile */
-#define PICOC_VERSION TAG " r" VER
+#define PICOC_VERSION TAG " commit:" VER
 #else
 #define PICOC_VERSION "v2.3.2"
 #endif
