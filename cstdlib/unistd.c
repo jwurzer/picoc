@@ -1,9 +1,9 @@
 /*  */
+#ifndef WIN32
 #include <fcntl.h>
 #include <limits.h>
 
 #include "../interpreter.h"
-
 
 static int ZeroValue = 0;
 
@@ -604,4 +604,5 @@ void UnistdSetupFunc(Picoc *pc)
     VariableDefinePlatformVar(pc, NULL, "optopt", &pc->IntType,
         (union AnyValue *)&optopt, true);
 }
+#endif
 
