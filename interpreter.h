@@ -71,6 +71,9 @@ typedef FILE IOFILE;
 #define IS_NUMERIC_COERCIBLE(v) (IS_INTEGER_NUMERIC(v) || IS_FP(v))
 #define IS_NUMERIC_COERCIBLE_PLUS_POINTERS(v,ap) (IS_NUMERIC_COERCIBLE(v) || IS_POINTER_COERCIBLE(v,ap))
 
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 struct Table;
 struct Picoc_Struct;
@@ -734,5 +737,9 @@ extern void StdboolSetupFunc(Picoc *pc);
 extern const char UnistdDefs[];
 extern struct LibraryFunction UnistdFunctions[];
 extern void UnistdSetupFunc(Picoc *pc);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* INTERPRETER_H */

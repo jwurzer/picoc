@@ -18,6 +18,9 @@
 	the stack being corrupt */
 #define PicocPlatformSetExitPoint(pc) setjmp((pc)->PicocExitBuf)
 
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 /* parse.c */
 extern void PicocParse(Picoc *pc, const char *FileName, const char *Source,
@@ -32,5 +35,9 @@ extern void PicocPlatformScanFile(Picoc *pc, const char *FileName);
 
 /* include.c */
 extern void PicocIncludeAllSystemHeaders(Picoc *pc);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* PICOC_H */

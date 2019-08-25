@@ -68,6 +68,14 @@
 #define INTERACTIVE_PROMPT_STATEMENT "picoc> "
 #define INTERACTIVE_PROMPT_LINE "     > "
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 extern jmp_buf ExitBuf;
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* PLATFORM_H */
